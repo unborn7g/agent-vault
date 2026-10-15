@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Canvas */
+  --bg: #0A1628;
+  --bg-gradient: radial-gradient(ellipse 80% 40% at 50% -10%, rgba(45,212,191,0.08) 0%, transparent 70%),
+                 linear-gradient(180deg, #0A1628 0%, #0A1628 100%);
+
+  /* Surfaces — frosted glass on dark */
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-strong: rgba(255, 255, 255, 0.08);
+  --surface-muted: rgba(255, 255, 255, 0.04);
+
+  /* Typography */
+  --ink: #F0F6FF;
+  --ink-2: #C4D4E8;
+  --muted: #7A93B0;
+  --subtle: #4D6380;
+
+  /* Borders */
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.18);
+
+  /* Accent — teal only */
+  --accent: #2DD4BF;
+  --accent-hover: #14B8A6;
+  --accent-dim: rgba(45, 212, 191, 0.12);
+  --accent-text: #0A1628;
+
+  /* Focus ring */
+  --focus: rgba(45, 212, 191, 0.40);
+
+  /* Semantic */
+  --success: #34D399;
+  --success-dim: rgba(52, 211, 153, 0.12);
+  --warning: #FBBF24;
+  --warning-dim: rgba(251, 191, 36, 0.12);
+  --danger: #F87171;
+  --danger-dim: rgba(248, 113, 113, 0.10);
+
+  /* Violet for Approved state */
+  --violet: #A78BFA;
+  --violet-dim: rgba(167, 139, 250, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+.display { font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.03em; }
+.mono { font-family: 'JetBrains Mono', Menlo, monospace; }
+
+/* Card — frosted glass */
+.card {
+  background: var(--surface-strong);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.card-muted {
+  background: var(--surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+/* Pill button — teal primary */
+.btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #0A1628;
+  background: var(--accent);
+  border: none;
+  cursor: pointer;
+  transition: background 200ms ease, opacity 200ms ease, transform 100ms ease;
+  letter-spacing: -0.01em;
+}
+.btn-primary:hover:not(:disabled) { background: var(--accent-hover); }
+.btn-primary:active:not(:disabled) { transform: scale(0.98); }
+.btn-primary:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* Ghost button */
+.btn-ghost {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 50px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: border-color 200ms, color 200ms, opacity 200ms;
+}
+.btn-ghost:hover:not(:disabled) { border-color: var(--border-strong); color: var(--ink-2); }
+.btn-ghost:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* Input fields */
+.field {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 200ms;
+}
+.field:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--focus); }
+.field::placeholder { color: var(--subtle); }
+
+.field-mono {
+  font-family: 'JetBrains Mono', Menlo, monospace;
+  font-size: 13px;
+}
+
+.field-amount {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+/* Section label */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* Divider */
+.divide-card > * + * {
+  border-top: 1px solid var(--border);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--subtle); border-radius: 4px; }
